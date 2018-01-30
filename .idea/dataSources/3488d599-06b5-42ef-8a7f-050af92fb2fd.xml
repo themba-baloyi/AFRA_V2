@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - afra@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="AFRA">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="personaldetails"/>
+    <schema id="7" parent="1" name="springBoot"/>
+    <table id="8" parent="2" name="Access_Levels"/>
+    <table id="9" parent="2" name="Departments"/>
+    <table id="10" parent="2" name="Finance_Project"/>
+    <table id="11" parent="2" name="Project_Hours"/>
+    <table id="12" parent="2" name="Project_Resources"/>
+    <table id="13" parent="2" name="Projects"/>
+    <table id="14" parent="2" name="Resource"/>
+    <table id="15" parent="2" name="Resource_Work"/>
+    <table id="16" parent="2" name="Supplier_Project"/>
+    <table id="17" parent="2" name="Suppliers"/>
+    <table id="18" parent="2" name="Users"/>
+    <column id="19" parent="8" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="20" parent="8" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="8" name="description">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="22" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="23" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="9" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="25" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="26" parent="10" name="est_cost">
+      <Position>1</Position>
+      <DataType>double|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="10" name="act_cost">
+      <Position>2</Position>
+      <DataType>double|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="10" name="project_fk">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="29" parent="10" name="project_fk">
+      <ColNames>project_fk</ColNames>
+    </index>
+    <foreign-key id="30" parent="10" name="finance_project_ibfk_1">
+      <ColNames>project_fk</ColNames>
+      <RefSchemaName>afra</RefSchemaName>
+      <RefTableName>Projects</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="31" parent="11" name="month">
+      <Position>1</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="11" name="hours">
+      <Position>2</Position>
+      <DataType>double|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="11" name="project_fk">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="34" parent="11" name="project_fk">
+      <ColNames>project_fk</ColNames>
+    </index>
+    <foreign-key id="35" parent="11" name="project_hours_ibfk_1">
+      <ColNames>project_fk</ColNames>
+      <RefSchemaName>afra</RefSchemaName>
+      <RefTableName>Projects</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="36" parent="12" name="rate">
+      <Position>1</Position>
+      <DataType>double|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="12" name="resource_fk">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="38" parent="12" name="project_fk">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="39" parent="12" name="project_fk">
+      <ColNames>project_fk</ColNames>
+    </index>
+    <index id="40" parent="12" name="resource_fk">
+      <ColNames>resource_fk</ColNames>
+    </index>
+    <foreign-key id="41" parent="12" name="project_resources_ibfk_1">
+      <ColNames>resource_fk</ColNames>
+      <RefSchemaName>afra</RefSchemaName>
+      <RefTableName>Resource</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="42" parent="12" name="project_resources_ibfk_2">
+      <ColNames>project_fk</ColNames>
+      <RefSchemaName>afra</RefSchemaName>
+      <RefTableName>Projects</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="43" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="44" parent="13" name="name">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="45" parent="13" name="absa_nav_num">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="13" name="absa_in_num">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="13" name="dept_fk">
+      <Position>5</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="48" parent="13" name="dept_fk">
+      <ColNames>dept_fk</ColNames>
+    </index>
+    <key id="49" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="50" parent="13" name="projects_ibfk_1">
+      <ColNames>dept_fk</ColNames>
+      <RefSchemaName>afra</RefSchemaName>
+      <RefTableName>Departments</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="51" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="52" parent="14" name="fname">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="53" parent="14" name="type">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="14" name="role">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="55" parent="14" name="email">
+      <Position>5</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="14" name="lname">
+      <Position>6</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="57" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="58" parent="15" name="month">
+      <Position>1</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="59" parent="15" name="hours">
+      <Position>2</Position>
+      <DataType>double|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="60" parent="15" name="year">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="61" parent="15" name="confirmation">
+      <Position>4</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="62" parent="15" name="resource_fk">
+      <Position>5</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="63" parent="15" name="project_fk">
+      <Position>6</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="64" parent="15" name="project_fk">
+      <ColNames>project_fk</ColNames>
+    </index>
+    <index id="65" parent="15" name="resource_fk">
+      <ColNames>resource_fk</ColNames>
+    </index>
+    <foreign-key id="66" parent="15" name="resource_work_ibfk_1">
+      <ColNames>resource_fk</ColNames>
+      <RefSchemaName>afra</RefSchemaName>
+      <RefTableName>Resource</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="67" parent="15" name="resource_work_ibfk_2">
+      <ColNames>project_fk</ColNames>
+      <RefSchemaName>afra</RefSchemaName>
+      <RefTableName>Projects</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="68" parent="16" name="est_cost">
+      <Position>1</Position>
+      <DataType>double|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="69" parent="16" name="act_cost">
+      <Position>2</Position>
+      <DataType>double|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="70" parent="16" name="supplier_fk">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="71" parent="16" name="project_fk">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="72" parent="16" name="project_fk">
+      <ColNames>project_fk</ColNames>
+    </index>
+    <index id="73" parent="16" name="supplier_fk">
+      <ColNames>supplier_fk</ColNames>
+    </index>
+    <foreign-key id="74" parent="16" name="supplier_project_ibfk_1">
+      <ColNames>supplier_fk</ColNames>
+      <RefSchemaName>afra</RefSchemaName>
+      <RefTableName>Suppliers</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="75" parent="16" name="supplier_project_ibfk_2">
+      <ColNames>project_fk</ColNames>
+      <RefSchemaName>afra</RefSchemaName>
+      <RefTableName>Projects</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="76" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="77" parent="17" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="78" parent="17" name="resource_fk">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="79" parent="17" name="resource_fk">
+      <ColNames>resource_fk</ColNames>
+    </index>
+    <key id="80" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="81" parent="17" name="suppliers_ibfk_1">
+      <ColNames>resource_fk</ColNames>
+      <RefSchemaName>afra</RefSchemaName>
+      <RefTableName>Resource</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="82" parent="18" name="password">
+      <Position>1</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="83" parent="18" name="resource_fk">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="84" parent="18" name="access_fk">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="85" parent="18" name="access_fk">
+      <ColNames>access_fk</ColNames>
+    </index>
+    <index id="86" parent="18" name="resource_fk">
+      <ColNames>resource_fk</ColNames>
+    </index>
+    <foreign-key id="87" parent="18" name="users_ibfk_1">
+      <ColNames>resource_fk</ColNames>
+      <RefSchemaName>afra</RefSchemaName>
+      <RefTableName>Resource</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="88" parent="18" name="users_ibfk_2">
+      <ColNames>access_fk</ColNames>
+      <RefSchemaName>afra</RefSchemaName>
+      <RefTableName>Access_Levels</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>
