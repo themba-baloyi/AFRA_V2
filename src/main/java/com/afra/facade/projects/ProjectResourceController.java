@@ -5,9 +5,7 @@ import com.afra.services.projects.ProjectResourceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,34 +24,37 @@ public class ProjectResourceController implements ProjectResource {
 
     @GetMapping("/byResource/{resourceId}")
     @Override
-    public ResponseEntity<List<ProjectResourcesEntities>> getProjectResourceByResource(String resourceId) {
+    public ResponseEntity<List<ProjectResourcesEntities>> getProjectResourceByResource(@PathVariable String resourceId) {
         return service.getProjectResourceByResource(resourceId);
     }
 
     @GetMapping("/byProject/{projectId}")
     @Override
-    public ResponseEntity<List<ProjectResourcesEntities>> getProjectResourceByProject(String projectId) {
+    public ResponseEntity<List<ProjectResourcesEntities>> getProjectResourceByProject(@PathVariable String projectId) {
         return service.getProjectResourceByProject(projectId);
     }
 
-    @GetMapping("/byId")
+    @GetMapping("/byId/{resourceId}/{projectId}")
     @Override
-    public ResponseEntity<ProjectResourcesEntities> getProjectResource(String resourceId, String projectId) {
+    public ResponseEntity<ProjectResourcesEntities> getProjectResource(@PathVariable String resourceId,@PathVariable String projectId) {
         return service.getProjectResource(resourceId, projectId);
     }
 
     @Override
-    public ResponseEntity<ProjectResourcesEntities> createProjectResource(ProjectResourcesEntities data) {
-        return null;
+    @PostMapping("/create")
+    public ResponseEntity<ProjectResourcesEntities> createProjectResource(@RequestBody ProjectResourcesEntities data) {
+        return service.createProjectResource(data);
     }
 
     @Override
-    public ResponseEntity<ProjectResourcesEntities> updateProjectResource(ProjectResourcesEntities data) {
-        return null;
+    @PutMapping("/update")
+    public ResponseEntity<ProjectResourcesEntities> updateProjectResource(@RequestBody ProjectResourcesEntities data) {
+        return service.updateProjectResource(data);
     }
 
     @Override
-    public ResponseEntity deleteProjectResource(String resourceId, String projectId) {
-        return null;
+    @DeleteMapping("/delete/{resourceId}/{projectId}")
+    public ResponseEntity deleteProjectResource(@PathVariable String resourceId,@PathVariable String projectId) {
+        return service.deleteProjectResource(resourceId, projectId);
     }
 }

@@ -62,15 +62,15 @@ public class ProjectFinanceServiceImpl implements ProjectFinanceService {
             return new ResponseEntity<ProjectFinanceEntities>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+//todo: fix this delete method
     @Override
     public ResponseEntity deleteProjectCost(String projectId) {
         try {
-            if (!checkRecord(projectId)){
+            if (checkRecord(projectId)){
                 if(repo.deleteByProjectFk(projectId)){
                     return new ResponseEntity<ProjectFinanceEntities>(HttpStatus.OK);
                 }else{
-                    return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+                    return new ResponseEntity(HttpStatus.NOT_FOUND);
                 }
             }else{
                 return new ResponseEntity<ProjectFinanceEntities>(HttpStatus.NOT_FOUND);
@@ -83,7 +83,8 @@ public class ProjectFinanceServiceImpl implements ProjectFinanceService {
     public boolean checkRecord(String projectFk){
         if(repo.findByProjectFk(projectFk)!= null){
             return true;
+        }else {
+            return false;
         }
-        return false;
     }
 }

@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 public interface ProjectFinanceRepo extends CrudRepository<ProjectFinanceEntities, Long> {
 
     ProjectFinanceEntities findByProjectFk(String projectFk);
+
+    @Transactional
     boolean deleteByProjectFk(String projectFk);
 
     @Transactional

@@ -76,6 +76,16 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public ResponseEntity deleteSupplier(String id) {
-        return null;
+        try {
+            SuppliersEntities result = repo.findOne(id);
+            if(result != null){
+                repo.delete(id);
+                return new ResponseEntity<SuppliersEntities>( HttpStatus.OK);
+            }else {
+                return new ResponseEntity<SuppliersEntities>(HttpStatus.NOT_FOUND);
+            }
+        }catch (CannotCreateTransactionException ex){
+            return new ResponseEntity<SuppliersEntities>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

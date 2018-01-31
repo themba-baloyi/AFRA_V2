@@ -41,8 +41,8 @@ public class AccessLevelController implements AccessLevel{
     }
 
     @Override
-    @DeleteMapping("/delete")
-    public ResponseEntity deleteAccessLevel(Integer id) {
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity deleteAccessLevel(@PathVariable Integer id) {
         return service.deleteAccessLevel(id);
     }
 }

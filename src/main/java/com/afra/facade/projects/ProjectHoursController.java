@@ -23,7 +23,7 @@ public class ProjectHoursController implements ProjectHours{
     }
 
     @Override
-    @GetMapping("/{id}")
+    @GetMapping("/{projectId}")
     public ResponseEntity<ProjectHoursEntities> getProjectHoursByProject(@PathVariable String projectId) {
         return service.getProjectHoursByProject(projectId);
     }
@@ -41,7 +41,7 @@ public class ProjectHoursController implements ProjectHours{
     }
 
     @Override
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{projectId}")
     public ResponseEntity deleteProjectHours(@PathVariable String projectId) {
         return service.deleteProjectHours(projectId);
     }

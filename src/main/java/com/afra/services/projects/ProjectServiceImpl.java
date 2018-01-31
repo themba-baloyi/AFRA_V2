@@ -1,5 +1,5 @@
 package com.afra.services.projects;
-
+//todo: make sure you check if department exists before insert a new project
 import com.afra.entities.ProjectsEntities;
 import com.afra.entities.UsersEntities;
 import com.afra.repository.ProjectRepo;

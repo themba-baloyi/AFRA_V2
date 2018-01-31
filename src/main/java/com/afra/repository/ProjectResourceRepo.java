@@ -3,6 +3,7 @@ package com.afra.repository;
 import com.afra.entities.ProjectResourcesEntities;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -12,5 +13,7 @@ public interface ProjectResourceRepo extends CrudRepository<ProjectResourcesEnti
     List<ProjectResourcesEntities> findAllByResourceFk(String resourceFk);
     List<ProjectResourcesEntities> findAllByProjectFk(String projectFk);
     ProjectResourcesEntities findByProjectFkAndResourceFk(String resourceFk, String projectFk);
+
+    @Transactional
     void deleteByProjectFkAndResourceFk(String projectFk, String resourceFk);
 }

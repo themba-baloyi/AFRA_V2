@@ -6,21 +6,44 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/afra/resources")
-public class ResourceController{
+public class ResourceController implements Resource{
 
     @Autowired
     ResourceServiceImpl service;
 
+    @Override
+    @GetMapping("/all")
+    public ResponseEntity<List<ResourceEntities>> getAllResources() {
+        return service.getAllResources();
+    }
+
+    @Override
+    @GetMapping("/byId/{id}")
+    public ResponseEntity<ResourceEntities> getResourceById(@PathVariable String id) {
+        return service.getResourceById(id);
+    }
+
+    @Override
     @PostMapping("/create")
     public ResponseEntity<ResourceEntities> createResource(@RequestBody ResourceEntities resource) {
-        ResponseEntity<ResourceEntities> result = service.createResource(resource);
-        return result;
+       return service.createResource(resource);
+    }
+
+    @Override
+    @PutMapping("/update")
+    public ResponseEntity<ResourceEntities> updateResource(@RequestBody ResourceEntities resource) {
+        return service.updateResource(resource);
+    }
+
+    @Override
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity deleteResource(@PathVariable String id) {
+        return service.deleteResource(id);
     }
 }
