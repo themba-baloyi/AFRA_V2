@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/afra/resources")
 public class ResourceController implements Resource{
@@ -23,24 +23,28 @@ public class ResourceController implements Resource{
         return service.getAllResources();
     }
 
+    
     @Override
     @GetMapping("/byId/{id}")
     public ResponseEntity<ResourceEntities> getResourceById(@PathVariable String id) {
         return service.getResourceById(id);
     }
 
+    
     @Override
     @PostMapping("/create")
     public ResponseEntity<ResourceEntities> createResource(@RequestBody ResourceEntities resource) {
        return service.createResource(resource);
     }
 
+    
     @Override
     @PutMapping("/update")
     public ResponseEntity<ResourceEntities> updateResource(@RequestBody ResourceEntities resource) {
         return service.updateResource(resource);
     }
 
+    
     @Override
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteResource(@PathVariable String id) {

@@ -7,16 +7,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.nio.file.Path;
 import java.util.List;
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/afra/project")
 public class ProjectController{
 
     @Autowired
     ProjectServiceImpl service;
-
-
 
     @GetMapping("/projectAll")
     public ResponseEntity<List<ProjectsEntities>> getAllProjects() {
@@ -39,7 +39,7 @@ public class ProjectController{
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity deleteProject(@PathVariable String id) {
+    public ResponseEntity deleteProject(@PathVariable String id, HttpServletResponse response) {
         return service.deleteProject(id);
     }
 }

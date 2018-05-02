@@ -16,30 +16,35 @@ public class DepartmentController implements Department{
     DepartmentServiceImpl service;
 
 
+    @CrossOrigin
     @Override
     @GetMapping("/all")
     public ResponseEntity<List<DepartmentsEntities>> getAllDepartments() {
         return service.getAllDepartments();
     }
 
+    @CrossOrigin
     @Override
     @GetMapping("/{id}")
     public ResponseEntity<DepartmentsEntities> getDepartmentById(@PathVariable String id) {
         return service.getDepartmentById(id);
     }
 
+    @CrossOrigin
     @Override
     @PostMapping("/create")
     public ResponseEntity<DepartmentsEntities> createDepartment(@RequestBody DepartmentsEntities department) {
         return service.createDepartment(department);
     }
 
+    @CrossOrigin
     @Override
     @PutMapping("/update")
     public ResponseEntity<DepartmentsEntities> updateDepartment(@RequestBody DepartmentsEntities department) {
         return service.updateDepartment(department);
     }
 
+    @CrossOrigin
     @Override
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteDepartment(@PathVariable String id) {

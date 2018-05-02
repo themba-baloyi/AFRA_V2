@@ -16,30 +16,35 @@ public class ProjectHoursController implements ProjectHours{
     @Autowired
     ProjectHoursService service;
 
+    @CrossOrigin
     @Override
     @GetMapping("/all")
     public ResponseEntity<List<ProjectHoursEntities>> getAllProjectHours() {
         return service.getAllProjectHours();
     }
 
+    @CrossOrigin
     @Override
     @GetMapping("/{projectId}")
     public ResponseEntity<ProjectHoursEntities> getProjectHoursByProject(@PathVariable String projectId) {
         return service.getProjectHoursByProject(projectId);
     }
 
+    @CrossOrigin
     @Override
     @PostMapping("/create")
     public ResponseEntity<ProjectHoursEntities> createProjectHours(@RequestBody ProjectHoursEntities data) {
         return service.createProjectHours(data);
     }
 
+    @CrossOrigin
     @Override
     @PutMapping("/update")
     public ResponseEntity<ProjectHoursEntities> updateProjectHours(@RequestBody ProjectHoursEntities data) {
         return service.updateProjectHours(data);
     }
 
+    @CrossOrigin
     @Override
     @DeleteMapping("/delete/{projectId}")
     public ResponseEntity deleteProjectHours(@PathVariable String projectId) {

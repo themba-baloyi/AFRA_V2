@@ -13,17 +13,27 @@ public class ResourceEntities {
     private String role;
     private String email;
     private String lname;
+    private String supplierFk;
+
+    public String getSupplierFk() {
+        return supplierFk;
+    }
+
+    public void setSupplierFk(String supplierFk) {
+        this.supplierFk = supplierFk;
+    }
 
     public ResourceEntities() {
     }
 
-    public ResourceEntities(String id, String fname, String type, String role, String email, String lname) {
+    public ResourceEntities(String id, String fname, String type, String role, String email, String lname, String supplierFk) {
         this.id = id;
         this.fname = fname;
         this.type = type;
         this.role = role;
         this.email = email;
         this.lname = lname;
+        this.supplierFk = supplierFk;
     }
 
     public String getId() {

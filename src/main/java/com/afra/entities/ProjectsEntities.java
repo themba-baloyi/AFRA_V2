@@ -11,18 +11,16 @@ public class ProjectsEntities {
     private String name;
     private String absaNavNum;
     private String absaInNum;
-    private String deptFk;
 
 
     public ProjectsEntities() {
     }
 
-    public ProjectsEntities(String id, String name, String absaNavNum, String absaInNum, String deptFk) {
+    public ProjectsEntities(String id, String name, String absaNavNum, String absaInNum) {
         this.id = id;
         this.name = name;
         this.absaNavNum = absaNavNum;
         this.absaInNum = absaInNum;
-        this.deptFk = deptFk;
     }
 
     public String getId() {
@@ -57,13 +55,6 @@ public class ProjectsEntities {
         this.absaInNum = absaInNum;
     }
 
-    public String getDeptFk() {
-        return deptFk;
-    }
-
-    public void setDeptFk(String deptFk) {
-        this.deptFk = deptFk;
-    }
 
     @Override
     public String toString() {
@@ -72,7 +63,6 @@ public class ProjectsEntities {
                 ", name='" + name + '\'' +
                 ", absaNavNum='" + absaNavNum + '\'' +
                 ", absaInNum='" + absaInNum + '\'' +
-                ", deptFk='" + deptFk + '\'' +
                 '}';
     }
 }

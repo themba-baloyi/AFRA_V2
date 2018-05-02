@@ -2,12 +2,14 @@ package com.afra.services.projects;
 
 import com.afra.entities.ProjectFinanceEntities;
 import com.afra.repository.ProjectFinanceRepo;
+import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.CannotCreateTransactionException;
 
+import java.util.List;
 
 
 @Service
@@ -25,13 +27,13 @@ public class ProjectFinanceServiceImpl implements ProjectFinanceService {
         if(checkRecord(projectId)){
             try{
                 ProjectFinanceEntities result = repo.findByProjectFk(projectId);
-                return  new ResponseEntity<ProjectFinanceEntities>(result, HttpStatus.OK);
+                return  new ResponseEntity<>(result, HttpStatus.OK);
             }catch (CannotCreateTransactionException ex){
-                return new ResponseEntity<ProjectFinanceEntities>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
 
         }else{
-            return new ResponseEntity<ProjectFinanceEntities>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
@@ -40,12 +42,12 @@ public class ProjectFinanceServiceImpl implements ProjectFinanceService {
         try {
             if (!checkRecord(projFin.getProjectFk())){
                 repo.save(projFin);
-                return new ResponseEntity<ProjectFinanceEntities>(projFin, HttpStatus.OK);
+                return new ResponseEntity<>(projFin, HttpStatus.OK);
             }else{
-                return new ResponseEntity<ProjectFinanceEntities>(HttpStatus.CONFLICT);
+                return new ResponseEntity<>(HttpStatus.CONFLICT);
             }
         }catch (CannotCreateTransactionException ex){
-            return new ResponseEntity<ProjectFinanceEntities>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -77,6 +79,17 @@ public class ProjectFinanceServiceImpl implements ProjectFinanceService {
             }
         }catch (CannotCreateTransactionException ex){
             return new ResponseEntity<ProjectFinanceEntities>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @Override
+    public ResponseEntity<List<ProjectFinanceEntities>> getAllProjectCost() {
+        try {
+            List<ProjectFinanceEntities> results = IterableUtils.toList(repo.findAll());
+            return new ResponseEntity<List<ProjectFinanceEntities>>(results, HttpStatus.OK);
+
+        }catch (CannotCreateTransactionException ex){
+            return new ResponseEntity<List<ProjectFinanceEntities>>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
